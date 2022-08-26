@@ -1,16 +1,23 @@
 import React from 'react';
 import {useNavigate} from 'react-router-dom'
-import { useSelector } from 'react-redux';
+import { useDispatch ,useSelector } from 'react-redux';
 import ShowBookByTable from './ShowBookByTable';
+import { deleteBooks } from './BookSlice';
 const ShowBooks = () => {
     const bookshow = useSelector(state=>state.bookrducer.books);
     console.log(bookshow);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const handledeleteBook = (deletId)=>{
+     dispatch(deleteBooks(deletId));
+     console.log(deletId);
+    }
     return (
         <div>
             <h1> Show Books</h1>
-           <button onClick={()=>navigate('add-books')} > Add books</button>
-            <table class="table">
+           <button className='ml-auto' onClick={()=>navigate('/add-books',{replace:true})} > Add books</button>
+           
+            <table className="table">
             <thead>
           <tr>
             <th scope="col">S/N</th>
@@ -25,6 +32,7 @@ const ShowBooks = () => {
             bookshow.map(book=> 
               <ShowBookByTable key={book.id}
               bookData={book}
+             deletefunc={handledeleteBook} 
               >
             </ShowBookByTable>
             )
