@@ -10,8 +10,14 @@ const bookSlice = createSlice({
     initialState:initialStateObj,
     reducers:{
         showBooks:(state) =>state,
+        addBooks:(state,action)=>{
+            state.books.push(action.payload)
+        },
+        deleteBooks:(state,action)=>{
+            // state.books - action.payload
+        }
     }
 })
 
-export const {showBooks} = bookSlice.actions;
+export const {showBooks,addBooks} = bookSlice.actions;
 export default bookSlice.reducer;

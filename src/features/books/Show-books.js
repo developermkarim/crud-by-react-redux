@@ -1,12 +1,15 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import ShowBookByTable from './ShowBookByTable';
 const ShowBooks = () => {
     const bookshow = useSelector(state=>state.bookrducer.books);
     console.log(bookshow);
+    const navigate = useNavigate();
     return (
         <div>
             <h1> Show Books</h1>
+           <button onClick={()=>navigate('add-books')} > Add books</button>
             <table class="table">
             <thead>
           <tr>
