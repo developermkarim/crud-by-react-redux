@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit/dist/createSlice"
+import { createSlice } from "@reduxjs/toolkit";
 const initialStateObj  = {
     books : [
         {id:1,title:"A Golden Age", author:"Tahmima Anam",publication:"Goodreads publication"},
